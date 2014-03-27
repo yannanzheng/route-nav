@@ -16,7 +16,7 @@ import com.fabiocarballo.satnav.impl.RouteLengthCalculator;
 import com.fabiocarballo.satnav.impl.ShortestRouteCalculator;
 import com.fabiocarballo.satnav.impl.conditions.UsesAtMostXRoads;
 import com.fabiocarballo.satnav.impl.conditions.UsesExactlyXRoads;
-import com.fabiocarballo.satnav.impl.conditions.WithLengthSmallerThanX;
+import com.fabiocarballo.satnav.impl.conditions.WithDistanceSmallerThanX;
 import com.fabiocarballo.satnav.impl.exceptions.RoadJunctionDoesntExistException;
 
 /**
@@ -178,15 +178,15 @@ public class TestCase {
 		int expectedNumberOfRoutes = 2;
 
 		//act
-		List<String> allPaths = null;
+		int numberOfRoutes = -1;
 		try {
-			allPaths = findAllRoutes.findAllRoutesBetweenTwoPoints(roadJunctionsMap, C, C, hasAtMostThreeRoadJunctions);
+			numberOfRoutes = findAllRoutes.findNumberOfRoutesBetweenTwoPoints(roadJunctionsMap, C, C, hasAtMostThreeRoadJunctions);
 		} catch (RoadJunctionDoesntExistException e) {
 			e.printStackTrace();
 		}
 
 		//assert
-		Assert.assertEquals(expectedNumberOfRoutes, allPaths.size());
+		Assert.assertEquals(expectedNumberOfRoutes, numberOfRoutes);
 	}
 
 	/* 7. The number of routes starting at A and ending at C with exactly 4 junctions.
@@ -201,15 +201,15 @@ public class TestCase {
 		int expectedNumberOfRoutes = 3;
 
 		//act
-		List<String> allPaths = null;
+		int numberOfRoutes = -1;
 		try {
-			allPaths = findAllRoutes.findAllRoutesBetweenTwoPoints(roadJunctionsMap, A, C, hasExactlyFourRoadJunctions);
+			numberOfRoutes = findAllRoutes.findNumberOfRoutesBetweenTwoPoints(roadJunctionsMap, A, C, hasExactlyFourRoadJunctions);
 		} catch (RoadJunctionDoesntExistException e) {
 			e.printStackTrace();
 		}
 
 		//assert
-		Assert.assertEquals(expectedNumberOfRoutes, allPaths.size());
+		Assert.assertEquals(expectedNumberOfRoutes, numberOfRoutes);
 	}
 	
 	/*8. The length of the shortest route (in terms of distance to travel) from A
@@ -256,19 +256,19 @@ public class TestCase {
 	public void testFindAllRoutesThirdCase() {
 		//prepare
 		FindAllRoutes findAllRoutes = new FindAllRoutes();
-		WithLengthSmallerThanX withLengthSmallerThanThirty = new WithLengthSmallerThanX(30);
+		WithDistanceSmallerThanX withLengthSmallerThanThirty = new WithDistanceSmallerThanX(30);
 
 		int expectedNumberOfRoutes = 9;
 
 		//act
-		List<String> allRoutes = null;
+		int numberOfRoutes = -1;
 		try {
-			allRoutes = findAllRoutes.findAllRoutesBetweenTwoPoints(roadJunctionsMap, C, C, withLengthSmallerThanThirty);
+			numberOfRoutes = findAllRoutes.findNumberOfRoutesBetweenTwoPoints(roadJunctionsMap, C, C, withLengthSmallerThanThirty);
 		} catch (RoadJunctionDoesntExistException e) {
 			e.printStackTrace();
 		}
 
 		//assert
-		Assert.assertEquals(expectedNumberOfRoutes, allRoutes.size());
+		Assert.assertEquals(expectedNumberOfRoutes, numberOfRoutes);
 	}
 }

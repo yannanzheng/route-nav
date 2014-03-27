@@ -13,11 +13,11 @@ import com.fabiocarballo.satnav.impl.RoadJunction;
  * The "isTrue" method is true when the path has a distance 
  * smaller than or equal to X (specified in the constructor)
  */
-public class WithLengthSmallerThanX extends Condition {
+public class WithDistanceSmallerThanX extends Condition {
 
 	private int distance;
 
-	public WithLengthSmallerThanX(int distance) {
+	public WithDistanceSmallerThanX(int distance) {
 		this.distance = distance;
 	}
 

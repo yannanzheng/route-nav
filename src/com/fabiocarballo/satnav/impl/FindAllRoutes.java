@@ -17,7 +17,7 @@ public class FindAllRoutes {
 	 * 
 	 * This method is only used to set up the recursive search and return the list of found paths.
 	 */
-	public List<String> findAllRoutesBetweenTwoPoints(HashMap<String, RoadJunction> roadJunctionsMap,
+	public int findNumberOfRoutesBetweenTwoPoints(HashMap<String, RoadJunction> roadJunctionsMap,
 			String src, String destiny, Condition condition) throws RoadJunctionDoesntExistException {
 
 		paths = new ArrayList<String>();
@@ -36,7 +36,7 @@ public class FindAllRoutes {
 		
 		recursivePathSearch(srcRj, destiny, condition,visited);
 
-		return paths;
+		return paths.size();
 
 	}
 
