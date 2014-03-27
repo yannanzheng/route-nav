@@ -11,4 +11,4 @@ To run the test suite you can either :
 
 2. Using the command line, cd into the project root directory. Then cd into the "run-jar" directory and run the command "java -jar fabiocarballo-satnav.jar" . It should run the test suite and listing that all the tests went okay.
 
-Thank you :) 
+Thank you !!
